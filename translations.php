@@ -12,22 +12,9 @@
 $kirby->set('field', 'translations', __DIR__ . DS . 'fields' . DS . 'translations');
 $kirby->set('widget', 'translations', __DIR__ . DS . 'widgets' . DS . 'translations');
 
-// Routes
+load([
+  'translations\\controller' => __DIR__ . DS . 'controller.php',
+  'translations\\view'  => __DIR__ . DS . 'view.php'
+]);
 
-if (class_exists('Panel') && site()->user() && site()->user()->hasPanelAccess()) {
-  panel()->routes(array(
-    array(
-      'pattern' => 'plugin.translations/(:any)/(:all)',
-      'action' => function($language, $id) {
-        $page = page($id);
-        if (f::remove($page->textfile(NULL, $language))) {
-          panel()->notify(strtoupper($language) . ' deleted');
-        }
-        else {
-          panel()->alert('Translation could not be deleted');
-        }
-        panel()->redirect('pages/'. $id . '/edit');
-      }
-    )
-  ));
-}
+require 'routes.php';

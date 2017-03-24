@@ -88,7 +88,7 @@ class translationsField extends CheckboxField {
 
     if ($this->isTranslated($language)) {
       $classes[] = 'translated';
-      
+
       if ($this->isUpToDate($language)) {
         $classes[] = 'uptodate';
       }

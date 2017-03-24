@@ -7,6 +7,11 @@
       </a>
 
       <?php if ($field->deletable): ?>
+        <!-- Structure Field Version // panel/app/fields/structure/styles/items.php -->
+        <a data-modal class="btn btn-with-icon structure-delete-button" href="<?php echo panel()->urls()->index() ?>/plugin.translations/delete/<?php echo $language->code() ?>/<?php echo $page->id() ?>">
+          <?php i('trash-o', 'left') . _l('fields.structure.delete') ?>
+        </a>
+
         <span class="delete">
           <a class="translations-delete" href="#">
             <i class="fa fa-trash"></i>
